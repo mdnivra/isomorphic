@@ -55,18 +55,18 @@ server.get('/', function (req, res) {
 // Launch the server
 // -----------------------------------------------------------------------------
 
-https.createServer({
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
-}, server).listen(port,() => {
-  console.log(arguments[0]);
-//   /* eslint-disable no-console */
-  console.log(`The server is running at https://localhost:${port}/`);
-});
-
-// server.listen(port, () => {
-//   /* eslint-disable no-console */
-//   console.log(`The server is running at http://localhost:${port}/`);
+// https.createServer({
+//   key: fs.readFileSync('key.pem'),
+//   cert: fs.readFileSync('cert.pem')
+// }, server).listen(port,() => {
+//   console.log(arguments[0]);
+// //   /* eslint-disable no-console */
+//   console.log(`The server is running at https://localhost:${port}/`);
 // });
+
+server.listen(port, () => {
+  /* eslint-disable no-console */
+  console.log(`The server is running at http://localhost:${port}/`);
+});
 
 export default server;

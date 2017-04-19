@@ -3,6 +3,7 @@ import config from  '../webpack.config.js';
 
 let bundle = (gulp, plugins, options) => {
     return callback => {
+      options.watch = true;
       let bundler = webpack(config);
         let bundlerRunCount = 0;
 
@@ -10,7 +11,6 @@ let bundle = (gulp, plugins, options) => {
             if (error) {
                 throw new plugins.util.PluginError('webpack', error);
             }
-
 
             plugins.util.log(stats.toString({
                 colors: plugins.util.colors.supportsColor,
@@ -37,4 +37,4 @@ let bundle = (gulp, plugins, options) => {
     }
 };
 
-export default bundle;
+module.exports = bundle;

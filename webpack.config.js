@@ -12,8 +12,8 @@ import webpack from 'webpack';
 import extend from 'extend';
 import AssetsPlugin from 'assets-webpack-plugin';
 
-const DEBUG = !process.argv.includes('--release');
-const VERBOSE = process.argv.includes('--verbose');
+const DEBUG =  true; //!process.argv.includes('--release');
+const VERBOSE =  true;//process.argv.includes('--verbose');
 const AUTOPREFIXER_BROWSERS = [
   'Android 2.3',
   'Android >= 4',
@@ -82,19 +82,24 @@ const config = {
     loaders: [
       {
             test: /\.js$/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            exclude: [
+               /node_modules/,
+            ],
+            query: {
+                 presets: ['es2015', 'react']
+            }
       },
-
       {
             test: /\.jsx$/,
             loader: 'babel-loader',
             query: {
-              ///presets: ['es2015']
+                // presets: ['es2015']
             }
       },
       {
-    test  : /\.scss$/,
-    loader: STYLE_LOADER + '!' + CSS_LOADER + '!' + AUTOPREFIXER_LOADER + '!sass-loader?includePaths[]=' + encodeURIComponent( path.resolve( __dirname, './app/scss' ) )
+        test  : /\.scss$/,
+        loader: STYLE_LOADER + '!' + CSS_LOADER + '!' + AUTOPREFIXER_LOADER + '!sass-loader?includePaths[]=' + encodeURIComponent( path.resolve( __dirname, './app/scss' ) )
       },
        {
         test: /\.json$/,
@@ -131,7 +136,6 @@ const clientConfig = extend(true, {}, config, {
     path: path.join(__dirname, 'dist/public'),
     filename: DEBUG ? '[name].js?[hash]' : '[name].[hash].js',
   },
-
   // Choose a developer tool to enhance debugging
   // http://webpack.github.io/docs/configuration.html#devtool
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,

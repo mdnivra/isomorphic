@@ -1,20 +1,24 @@
-import { Route } from "react-router";
-import React from "react";
-import _ from 'lodash';
-import App from "./components/app";
+import React from 'react';
+import {
+  Route,
+  IndexRoute,
+} from 'react-router';
+import {
+    App,
+    Home,
+    NotFound,
+  } from './containers';
 
-
-let
-  getComponents = (componentId, params,callback) => {
-  if (componentId === 'brandSearch'){
-        require.ensure( [], function ( require ) {
-             callback( null, require( './components/brandSearch' ) );
-           }, 'brandSearch' )
-      }
-  };
-
-export default (
-  <Route component={App} path="/ui">
-    <Route path="brandSearch" getComponents={_.partial(getComponents,'brandSearch')} />
-  </Route>
-);
+export default (store) => {
+  /**
+   * Please keep routes in alphabetical order
+   */
+  return (
+    <Route path="/" component={App}>
+      { /* Home (main) route */ }
+      <IndexRoute component={Home}/>
+      { /* Catch all route */ }
+      <Route path="*" component={NotFound} status={404} />
+    </Route>
+  );
+};

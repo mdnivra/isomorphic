@@ -12,4 +12,4 @@ let buildWatch = (gulp, plugins, options) => {
     };
 };
 
-export default buildWatch;
+module.exports = buildWatch;

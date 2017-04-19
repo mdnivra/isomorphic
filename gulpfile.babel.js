@@ -36,8 +36,8 @@ let options = {
  *         If no task is provided, it will use the default export of the module.
  */
 let getTask = (moduleName, taskName) => {
-    let module = require('./tasks/' + moduleName),
-        task = taskName ? module[taskName] : module;
+    let module = require('./tasks/' + moduleName);
+    const task = taskName ? module[taskName] : module;
 
     return task(gulp, plugins, options);
 };

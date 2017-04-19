@@ -11,4 +11,4 @@ let testWatch = (gulp, plugins, options) => {
     };
 };
 
-export default testWatch;
+module.exports =  testWatch;

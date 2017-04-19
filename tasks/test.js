@@ -17,4 +17,4 @@ let test = (gulp, plugins, options) => {
     };
 };
 
-export default test;
+module.exports = test;

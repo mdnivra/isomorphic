@@ -29,4 +29,4 @@ const config = (gulp, plugins) => {
     };
 }
 
-export default config;
+module.exports = config;

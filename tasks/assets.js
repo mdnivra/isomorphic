@@ -9,4 +9,4 @@ let assets = (gulp, plugins, options) => {
     };
 };
 
-export default assets;
+module.exports = assets;

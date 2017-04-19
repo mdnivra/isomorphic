@@ -38,4 +38,4 @@ let serve = (gulp, plugins, options) => {
     }
 };
 
-export default serve;
+module.exports = serve;

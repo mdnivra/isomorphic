@@ -6,4 +6,4 @@ let build = () => {
     };
 };
 
-export default build;
+module.exports = build;

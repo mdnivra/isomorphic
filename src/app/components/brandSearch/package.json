@@ -1,6 +1,0 @@
-{
-  "name": "Brand Search",
-  "version": "0.0.0",
-  "private": true,
-  "main": "./BrandSearch.js"
-}
